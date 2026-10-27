@@ -10,7 +10,8 @@ if %errorlevel% neq 0 (
 )
 :: Jalankan script PowerShell di bawah tanda komentar
 powershell -NoProfile -ExecutionPolicy Bypass -Command "$content = [System.IO.File]::ReadAllText('%~f0'); Invoke-Expression $content"
-pause
+:: Hapus file script ini secara otomatis (Self-Delete / Clean up)
+(goto) 2>nul & del "%~f0"
 exit /b
 #>
 
